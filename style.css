@@ -4,16 +4,18 @@ body {
     overflow:hidden;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-image: url("bg-lake.png");
+  background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: url('/target.png') 34 34, auto;
 }
 
 .game {
     width: 100%;
     height: calc(100vh - (3rem + 40px));
-	background-image: url("bg-lake.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: url('/target.png') 34 34, auto;
+    
+    
   }
   
   button.play {
@@ -21,21 +23,28 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(9, 85, 9);
+    background:linear-gradient(180deg, rgba(139, 192, 74, 1) 0%, rgba(67, 153, 70, 1) 100%);
+    border: 5px inset rgb(2, 133, 11);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 10px 20px;
-    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  button.play:active {
+    background:linear-gradient(180deg, rgba(67, 153, 70, 1) 0%, rgb(49, 112, 51) 100%);
+    border-color: rgb(2, 101, 8);
   }
   
   .hud {
     padding: 10px 25px;
-    background-color: green;
+    /* background-color:  */
     display: flex;
     justify-content: space-between;
   }
   
-  .score-box, .time-box {
+  .score-box, .time-box, .ammo-box {
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);
