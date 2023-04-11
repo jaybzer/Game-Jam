@@ -1,0 +1,26 @@
+body { 
+	background-image: url("duck_hunt.png");
+
+}
+
+
+img 
+{ 
+    width: 100px; 
+    position: absolute; 
+    bottom: 0;
+}
+
+@keyframes bird1 { 
+	10% {left: 20%; bottom: 30%}
+	30% {left: 30%; bottom: 50%} 
+	50% {left: 40%; bottom: 70%} 
+	70% {left: 60%; bottom: 30%} 
+	100% {left: 100%; bottom: 100%}
+}
+
+#b1 { 
+    left: 0; 
+    animation-name: bird1; 
+    animation-duration: 6s; 
+}
