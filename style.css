@@ -93,7 +93,7 @@ img
     width: 100px; 
     position: absolute; 
     bottom: 0;
-    animation-fill-mode: forwards;
+    animation-fill-mode: none;
 }
 
 @keyframes bird1 { 
@@ -122,17 +122,17 @@ img
 
 #b1 { 
     left: 0; 
-    animation-name: bird1; 
+    
     animation-duration: 6s; 
 }
 #b2 { 
     left: 0; 
-    animation-name: bird2; 
+    
     animation-duration: 8s; 
 }
 #b3 { 
   left: 0; 
-  animation-name: bird3; 
+  
   animation-duration: 9s; 
 }
 
