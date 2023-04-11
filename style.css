@@ -1,39 +1,42 @@
+@font-face {
+  font-family: pixelstroke;
+  src: url(Super-Mario-Bros-3.ttf);
+}
+
 body { 
     margin: 0;
     padding: 0;
+    height: 100vh;
     overflow:hidden;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-	background-image: url("bg-lake.png");
-  background-position: center center;
+    font-family: 'VT323', monospace;
+	  background-image: url("img/bg-lake.png");
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: url('/target.png') 34 34, auto;
+    cursor: url('img/target.png') 34 34, auto;
 }
 
 .game {
     width: 100%;
     height: calc(100vh - (4rem + 30px));
-	background-image: url("img/duck_hunt.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: url('img/target.png') 34 34, auto;
+  }
 
+  #play, #reset {
+    position: absolute;
+    color: white;
+    font-family: 'VT323', monospace;
+    cursor: pointer;
   }
   
   #play {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background:linear-gradient(180deg, rgba(139, 192, 74, 1) 0%, rgba(67, 153, 70, 1) 100%);
     border: 5px inset rgb(2, 133, 11);
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
-    color: white;
     font-size: 3rem;
     padding: 10px 20px;
-    cursor: pointer;
   }
 
   #play:active {
@@ -42,23 +45,40 @@ body {
   }
 
   #reset {
-    position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
-    border: 3px inset #A06C20;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
-    color: white;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-    cursor: pointer;
     display: none;
   }
 
-  #reset:active {
+  .reset:active {
     background:linear-gradient(180deg, rgba(203, 145, 69, 1) 0%, rgb(164, 117, 56) 100%);
     border-color: #7c5417;
+  }
+
+  #no-ammo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #FFD687;
+    border: 5px inset #A06C20;
+    padding: 15px;
+    font-size: 1.2rem;
+    display: none;
+  }
+
+  .reset {
+    color: white;
+    font-family: 'VT323', monospace;
+    cursor: pointer;
+    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
+    border: 3px inset #A06C20;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
+
   }
   
   .hud {
@@ -66,25 +86,46 @@ body {
     display: flex;
     justify-content: space-between;
   }
+
+  #score {
+    font-family: pixelstroke;
+    color: white;
+    font-size: 2rem;
+    text-align: end;
+    margin-right: 20px;
+    position: absolute;
+    right: 0;
+  }
+
+  #time-box {
+    margin: 1em 0 1em 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: pixelstroke;
+    color: white;
+    font-size: 2rem;
+  }
+
+  #stopwatch {
+    position: unset;
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+  }
   
-  .score-box, .time-box, .ammo-box {
+  .ammo-box {
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 2rem;
     border-radius: 5px 15px;
     border: 5px inset rgb(151, 99, 3);
+    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
+
   }
-
-
-#ammo {
-	position: absolute; 
-	bottom: 20px; 
-	right: 20px; 
-	font-size: 20px;
-}
 
 

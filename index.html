@@ -8,18 +8,31 @@
 		<script src="custom.js"></script> 
 
 		<title>Duck Hunt</title>
+		<!-- GOOGLE FONT -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	</head> 
 
 	<body>
 		<div class="game">
-			<button id="play" onclick=Start() >COMMENCER </button>
-			<button id="reset">Recommencer</button>
+			<button id="play">COMMENCER</button>
+			<button id="reset" class="reset">Recommencer</button>
+
+			<p id="score">SCORE<br/><span id="currentScore">0000</span></p>
+			<div id="time-box"><img src="img/stopwatch.gif" id="stopwatch" alt="temps restant"> <span id="time">0</span></div>
+
+			<div id="no-ammo">
+				<h2>FIN</h2>
+				<p>C'est fini, vous n'avez plus de munitions...</p>
+				<button class="reset">Recommencer</button>
+
+			</div>
+
 			
 		</div>
 		<div class="hud">
-			<div class="score-box"><p>Score : <span id="currentScore">0</span></p></div>
 			<div class="ammo-box"><p>Munitions Restantes : <span id="currentAmmo"></p></div>
-			<div class="time-box"><p>Temps restant : <span id="time">0</span> secondes</p></div>
 		</div>
 
 
