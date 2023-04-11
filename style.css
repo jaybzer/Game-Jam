@@ -13,7 +13,13 @@ body {
 
 .game {
     width: 100%;
-    height: calc(100vh - (3rem + 40px));
+    height: calc(100vh - (4rem + 30px));
+	background-image: url("img/duck_hunt.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: url('img/target.png') 34 34, auto;
+
   }
   
   #play {
@@ -105,6 +111,15 @@ img
 	80% {left: 80%; bottom: 10%} */
 	100% {left: 100%; bottom: 80%}
 }
+@keyframes bird3 { 
+	10% {left: 10%; bottom: 40%}
+	30% {left: 50%; bottom: 30%} 
+	50% {left: 90%; bottom: 60%} 
+	80% {left: 80%; bottom: 10%} 
+	100% {left: 100%; bottom: 80%}
+}
+
+
 #b1 { 
     left: 0; 
     animation-name: bird1; 
@@ -113,6 +128,11 @@ img
 #b2 { 
     left: 0; 
     animation-name: bird2; 
-    animation-duration: 1s; 
+    animation-duration: 8s; 
+}
+#b3 { 
+  left: 0; 
+  animation-name: bird3; 
+  animation-duration: 9s; 
 }
 
