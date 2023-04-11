@@ -1,5 +1,6 @@
 body { 
 	background-image: url("duck_hunt.png");
+    overflow:hidden;
 
 }
 
@@ -9,6 +10,7 @@ img
     width: 100px; 
     position: absolute; 
     bottom: 0;
+    animation-fill-mode: forwards;
 }
 
 @keyframes bird1 { 
@@ -19,8 +21,21 @@ img
 	100% {left: 100%; bottom: 100%}
 }
 
+@keyframes bird2 { 
+	10% {left: 10%; bottom: 40%}
+	/*30% {left: 50%; bottom: 30%} 
+	50% {left: 90%; bottom: 60%} 
+	80% {left: 80%; bottom: 10%} */
+	100% {left: 100%; bottom: 80%}
+}
 #b1 { 
     left: 0; 
     animation-name: bird1; 
     animation-duration: 6s; 
 }
+#b2 { 
+    left: 0; 
+    animation-name: bird2; 
+    animation-duration: 1s; 
+}
+
