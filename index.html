@@ -11,18 +11,18 @@
 
 	<body>
 		<div class="game">
-			<button class="play">COMMENCER</button>
+			<button class="play">GO !</button>
 			
 		</div>
 		<div class="hud">
-			<div class="score-box"><p>Score : <span id="currentScore">0</span></p></div>
-			<div class="ammo-box"><p>Munitions Restantes : <span id="currentAmmo"></p></div>
-			<div class="time-box"><p>Temps restant : <span id="time">0</span> secondes</p></div>
+			<div class="score-box">Score : <span id="currentScore"></div></div>
 		</div>
-
         <img id="b1" onclick="shoot(this)" src="black_bird.gif"/>
 
         <img id="b2" onclick="shoot(this)" src="duck.gif"/>
+
+		<div id="ammo">Munitions Restantes : <span id="currentAmmo"></div></div>
+		<div id="score">Score : <span id="currentScore"></div></div>
 
 	</body>
 	
