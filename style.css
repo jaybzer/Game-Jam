@@ -14,11 +14,9 @@ body {
 .game {
     width: 100%;
     height: calc(100vh - (3rem + 40px));
-    
-    
   }
   
-  button.play {
+  #play {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,14 +30,33 @@ body {
     cursor: pointer;
   }
 
-  button.play:active {
+  #play:active {
     background:linear-gradient(180deg, rgba(67, 153, 70, 1) 0%, rgb(49, 112, 51) 100%);
     border-color: rgb(2, 101, 8);
+  }
+
+  #reset {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
+    border: 3px inset #A06C20;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: none;
+  }
+
+  #reset:active {
+    background:linear-gradient(180deg, rgba(203, 145, 69, 1) 0%, rgb(164, 117, 56) 100%);
+    border-color: #7c5417;
   }
   
   .hud {
     padding: 10px 25px;
-    /* background-color:  */
     display: flex;
     justify-content: space-between;
   }
