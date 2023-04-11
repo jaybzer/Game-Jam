@@ -9,11 +9,11 @@ body {
 .game {
     width: 100%;
     height: calc(100vh - (4rem + 30px));
-	background-image: url("duck_hunt.png");
+	background-image: url("img/duck_hunt.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: url('/target.png') 34 34, auto;
+    cursor: url('img/target.png') 34 34, auto;
   }
   
   .play {
