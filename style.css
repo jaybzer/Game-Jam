@@ -9,25 +9,23 @@ body {
     overflow:hidden;
     box-sizing: border-box;
     font-family: 'VT323', monospace;
-	  background-image: url("bg-lake.png");
+	  background-image: url("img/bg-lake.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: url('/target.png') 34 34, auto;
+    cursor: url('img/target.png') 34 34, auto;
 }
 
 .game {
     width: 100%;
     height: calc(100vh - (5rem + 40px));
+
   }
 
   #play, #reset {
     position: absolute;
-    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
     color: white;
-    cursor: pointer;
     font-family: 'VT323', monospace;
-
   }
   
   #play {
@@ -113,6 +111,15 @@ img
 	80% {left: 80%; bottom: 10%} */
 	100% {left: 100%; bottom: 80%}
 }
+@keyframes bird3 { 
+	10% {left: 10%; bottom: 40%}
+	30% {left: 50%; bottom: 30%} 
+	50% {left: 90%; bottom: 60%} 
+	80% {left: 80%; bottom: 10%} 
+	100% {left: 100%; bottom: 80%}
+}
+
+
 #b1 { 
     left: 0; 
     animation-name: bird1; 
@@ -121,6 +128,11 @@ img
 #b2 { 
     left: 0; 
     animation-name: bird2; 
-    animation-duration: 1s; 
+    animation-duration: 8s; 
+}
+#b3 { 
+  left: 0; 
+  animation-name: bird3; 
+  animation-duration: 9s; 
 }
 
