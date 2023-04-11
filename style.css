@@ -4,6 +4,11 @@ body {
     overflow:hidden;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-image: url("bg-lake.png");
+  background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: url('/target.png') 34 34, auto;
 }
 
 .game {
@@ -14,38 +19,64 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     cursor: url('img/target.png') 34 34, auto;
+
   }
   
-  .play {
+  #play {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(9, 85, 9);
+    background:linear-gradient(180deg, rgba(139, 192, 74, 1) 0%, rgba(67, 153, 70, 1) 100%);
+    border: 5px inset rgb(2, 133, 11);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 10px 20px;
-    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  #play:active {
+    background:linear-gradient(180deg, rgba(67, 153, 70, 1) 0%, rgb(49, 112, 51) 100%);
+    border-color: rgb(2, 101, 8);
+  }
+
+  #reset {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
+    border: 3px inset #A06C20;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: none;
+  }
+
+  #reset:active {
+    background:linear-gradient(180deg, rgba(203, 145, 69, 1) 0%, rgb(164, 117, 56) 100%);
+    border-color: #7c5417;
   }
   
   .hud {
-    /* position: absolute;
-    bottom: 0; */
-    width: 100%;
-    padding: 10px;
-    background-color: green;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: space-between;
   }
   
-  .score-box {
-    width: 250px;
-    height: 4rem;
-    background-color: rgb(215, 215, 215);
+  .score-box, .time-box, .ammo-box {
+    height: 3rem;
+    padding: 5px 10px;
+    background-color: rgb(232, 176, 72);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 5px 15px;
-    border: 5px inset rgb(184, 184, 184);
+    border: 5px inset rgb(151, 99, 3);
   }
 
 
