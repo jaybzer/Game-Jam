@@ -7,16 +7,24 @@
 		<link rel="stylesheet" href="style.css"> 
 		<script src="custom.js"></script> 
 		<title>Duck Hunt</title>
+		<!-- GOOGLE FONT -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	</head> 
 
 	<body>
 		<div class="game">
 			<button id="play">COMMENCER</button>
 			<button id="reset">Recommencer</button>
+
+			<div id="head">
+				<p id="score">SCORE<br/><span id="currentScore">0000</span></p>
+			</div>
+
 			
 		</div>
 		<div class="hud">
-			<div class="score-box"><p>Score : <span id="currentScore">0</span></p></div>
 			<div class="ammo-box"><p>Munitions Restantes : <span id="currentAmmo"></p></div>
 			<div class="time-box"><p>Temps restant : <span id="time">0</span> secondes</p></div>
 		</div>
