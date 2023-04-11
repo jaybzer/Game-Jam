@@ -42,7 +42,6 @@ window.onclick = function() {
 
 
 const birdSize = 40;
-const hummingbirdSize = 60;
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 
