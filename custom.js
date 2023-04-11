@@ -14,6 +14,7 @@ function Start() {
     count = 0;
     bullets++;
     document.getElementById("play").style.display = 'none';
+    document.getElementById("no-ammo").style.display = 'none';
     document.getElementById("currentScore").innerHTML = count;
     document.getElementById("currentAmmo").innerHTML = bullets;
     IntervId = setInterval(createDuck, 2000);
@@ -21,8 +22,9 @@ function Start() {
 }
 
 function End() {
-    document.getElementById("play").style.display = 'block';
+    document.getElementById("no-ammo").style.display = 'block';
     clearInterval(IntervId);
+    start = false;
 }
 
 function shoot(bird){
@@ -41,7 +43,6 @@ window.onclick = function() {
         }
         else {
             document.getElementById("currentAmmo").innerHTML=--bullets;
-            alert("Vous n'avez plus de munitions");
             End();            
         }
     }
