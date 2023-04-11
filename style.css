@@ -57,20 +57,13 @@ body {
   }
 
 
-#score {
+#ammo {
 	position: absolute; 
 	bottom: 20px; 
 	right: 20px; 
 	font-size: 20px;
 }
 
-
-#ammo {
-	position: absolute; 
-	bottom: 20px; 
-	left: 20px; 
-	font-size: 20px;
-}
 
 img 
 { 
