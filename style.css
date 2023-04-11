@@ -8,15 +8,15 @@ body {
 
 .game {
     width: 100%;
-    height: calc(100vh - (4rem + 30px));
-	background-image: url("duck_hunt.png");
+    height: calc(100vh - (3rem + 40px));
+	background-image: url("bg-lake.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: url('/target.png') 34 34, auto;
   }
   
-  .play {
+  button.play {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,23 +29,22 @@ body {
   }
   
   .hud {
-    /* position: absolute;
-    bottom: 0; */
-    width: 100%;
-    padding: 10px;
+    padding: 10px 25px;
     background-color: green;
+    display: flex;
+    justify-content: space-between;
   }
   
-  .score-box {
-    width: 250px;
-    height: 4rem;
-    background-color: rgb(215, 215, 215);
+  .score-box, .time-box {
+    height: 3rem;
+    padding: 5px 10px;
+    background-color: rgb(232, 176, 72);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 5px 15px;
-    border: 5px inset rgb(184, 184, 184);
+    border: 5px inset rgb(151, 99, 3);
   }
 
 
