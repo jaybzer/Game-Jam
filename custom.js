@@ -68,12 +68,15 @@ function Start() {
   IntervId2 = setInterval(function() { createBird('hummingbird') }, 5000);
 
   timerInterval = setInterval(() => {
+    let score = document.querySelector("#currentScore").textContent;
     if (start) {
         timeRemaining--;
         timerDisplay.textContent = timeRemaining;
     }
     if (timeRemaining === 0) {
       setTimeout(() => End('time'));
+           //ajout en base
+        // addScoreInRanking({ pseudo: pseudo.value, score: score });
       clearInterval(timerInterval);
     }
   }, 1000);
@@ -141,6 +144,7 @@ window.onclick = function() {
             }
         else {
             document.getElementById("currentAmmo").innerHTML=--bullets;
+                 //Ajout en base du pseudo et du score
             End('ammo');            
         }
     }
@@ -247,3 +251,53 @@ function changeDifficulty(newDifficulty) {
     IntervId1 = setInterval(function() { createBird('duck') }, difficultyParams[newDifficulty].birdInterval);
     IntervId2 = setInterval(function() { createBird('hummingbird') },  difficultyParams[newDifficulty].birdInterval);
     }
+
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+  getScoreInRanking();
+}
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+window.onclick = function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    closeModal();
+  }
+};
+
+async function addScoreInRanking(data) {
+  console.log(data);
+  let scoreToAdd = { pseudo: data.pseudo, score: data.score };
+  console.log("scoreToAdd", scoreToAdd);
+  await fetch("addRank.js", {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(scoreToAdd),
+  });
+}
+async function getScoreInRanking() {
+  let modalRanking = document.querySelector(".modal-content");
+
+  const request = await fetch("ranking.json");
+  const ranking = await request.json();
+  const rankingSorted = ranking.sort((a, b) => b.score - a.score);
+
+  for (i = 0; i < 5; i++) {
+    console.log(rankingSorted[i]);
+    let createDiv = document.createElement("div");
+    createDiv.classList.add("containerTop5");
+    createPseudo = document.createElement("p");
+    createPseudo.classList.add("name");
+    createScore = document.createElement("p");
+    createScore.classList.add("score");
+    createPseudo.innerHTML = rankingSorted[i].pseudo;
+    createScore.innerHTML = rankingSorted[i].score + " points";
+
+    createDiv.appendChild(createPseudo);
+    createDiv.appendChild(createScore);
+    modalRanking.appendChild(createDiv);
+  }
+}
