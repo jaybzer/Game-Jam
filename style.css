@@ -68,7 +68,7 @@ body {
     border: 5px inset rgb(2, 133, 11);
     font-size: 3rem;
     padding: 10px 20px;
-    margin: 3rem 0 20px;
+    margin: 1rem 0 20px;
   }
 
   #play:active {
@@ -172,7 +172,7 @@ body {
   .ammo-box2 {
     position: absolute;
     bottom: 20px;
-    right: 0;
+    right: 20px;
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);
@@ -189,7 +189,7 @@ body {
   .ammo-box {
     position: absolute;
     bottom: 20px;
-    left: 0;
+    left: 20px;
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);

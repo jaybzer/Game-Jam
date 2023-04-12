@@ -54,7 +54,7 @@ function Start() {
   bullets = 70;
   count = 0;
   bullets++;
-  document.getElementById("no-ammo").style.display = 'none';
+  document.getElementById("end").style.display = 'none';
   document.getElementById("play").style.display = "none";
   document.getElementById("title").style.display = "none";
   document.getElementById("title-bg").style.display = "none";
@@ -109,7 +109,7 @@ function End(type) {
         paused = false;
         document.getElementById("title").style.display = "block";
         document.getElementById("title-bg").style.display = "block";
-
+        document.getElementById("play").style.display = "inline-block";
         break;
         case 'restart':
         document.getElementById("menu-pause").style.display = "none";
