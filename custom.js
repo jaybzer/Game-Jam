@@ -1,11 +1,13 @@
 let bullets = 30;
 let count = 0;
 let start = false;
+let paused = false;
 let elapsedTime = 0;
 let totalGameTime = 60;
 let timeRemaining = totalGameTime;
 let timerInterval;
 let IntervId;
+
 
 window.onload = function () {
   document.getElementById("currentScore").innerHTML = count;
@@ -21,16 +23,14 @@ function Start() {
   bullets++;
   document.getElementById("no-ammo").style.display = 'none';
   document.getElementById("play").style.display = "none";
-  document.getElementById("title").style.display = "none";
-  document.getElementById("pause").style.display = "block";
-  document.getElementById("menu-pause").style.display = "none";
   document.getElementById("currentScore").innerHTML = count;
   document.getElementById("currentAmmo").innerHTML = bullets;
+  timerDisplay.textContent = timeRemaining;
 
   IntervId = setInterval(function() { createBird('duck') }, 2000);
   IntervId = setInterval(function() { createBird('hummingbird') }, 5000);
 
-  timerDisplay.textContent = timeRemaining;
+
 
   timerInterval = setInterval(() => {
     timeRemaining--;
@@ -42,22 +42,6 @@ function Start() {
   }, 1000);
 }
 
-// Fonction au clic sur le bouton pause
-function Pause() {
-  document.getElementById("menu-pause").style.display = "block";
-}
-
-// Fonction au clic sur le bouton reprendre
-function Resume() {
-    document.getElementById("menu-pause").style.display = "none";
-}
-
-function shoot(bird) {
-  if (bullets != 0) {
-    bird.style.display = "none";
-    document.getElementById("currentScore").innerHTML = ++count;
-  }
-}
 
 function End(type) {
 
@@ -100,6 +84,7 @@ const windowHeight = window.innerHeight;
 // Fonction pour créer un canard de façon aléatoire
 
 function createBird(type) {
+    if (pause == false) {
     let bird = document.createElement('img');
     bird.style.position = 'absolute';
     bird.style.width = birdSize + 'px';
@@ -135,6 +120,7 @@ function createBird(type) {
 
     // Ajouter le canard à la page web
     document.body.appendChild(bird);
+   }
 }
 
 // Fonction pour faire bouger le canard de gauche à droite
@@ -168,3 +154,4 @@ function killBird(bird, msg) {
     bird.remove();
 
 }
+
