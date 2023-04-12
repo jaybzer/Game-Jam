@@ -67,7 +67,10 @@ function Pause() {
 function Resume() {
     document.getElementById("menu-pause").style.display = "none";
     start = true;
-    paused = false;
+    setTimeout(() => {
+        paused = false;
+      }, "100")
+      
 }
 
 
