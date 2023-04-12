@@ -43,8 +43,10 @@ function Start() {
 
 
   timerInterval = setInterval(() => {
-    timeRemaining--;
-    timerDisplay.textContent = timeRemaining;
+    if (start) {
+        timeRemaining--;
+        timerDisplay.textContent = timeRemaining;
+    }
     if (timeRemaining === 0) {
       setTimeout(() => End('time'));
       clearInterval(timerInterval);
@@ -58,17 +60,29 @@ function Pause() {
     paused = true;
     console.log("in p fonction" + paused);
   document.getElementById("menu-pause").style.display = "block";
+  start = false;
 }
 
 // Fonction au clic sur le bouton reprendre
 function Resume() {
-    document.getElementById("menu-pause").style.display = "none";
-    setTimeout(() => {
-        paused = false;
-      }, "100");
-      
+   document.getElementById("menu-pause").style.display = "none";
+    start = true;
+
 }
 
+// Fonction au retour au menu
+function BackMenu() {
+    clearInterval(timerInterval);
+    clearInterval(IntervId);
+    document.getElementById("play").style.display = "block";
+    document.getElementById("menu-pause").style.display = "none";
+    document.getElementById("title").style.display = "block";
+    let allBirds = document.querySelectorAll('.duck, .hummingbird');
+    allBirds.forEach(element => {
+        element.style.display = "none";
+    });
+    start = false;
+}
 
 function End(type) {
     switch (type) {
@@ -125,9 +139,11 @@ function createBird(type) {
     switch (type) {
         case 'duck': 
         bird.setAttribute("src", "img/duck.gif");
+        bird.setAttribute("class", "duck");
         break;
         case 'hummingbird': 
         bird.setAttribute("src", "img/flutter.gif");
+        bird.setAttribute("class", "hummingbird");
         break;
     }
     let speed = Math.floor(Math.random() * 5) + 1;
