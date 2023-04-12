@@ -67,7 +67,10 @@ function Pause() {
 function Resume() {
     document.getElementById("menu-pause").style.display = "none";
     start = true;
-    paused = false;
+    setTimeout(() => {
+        paused = false;
+      }, "100")
+      
 }
 
 
@@ -95,6 +98,7 @@ function End(type) {
         document.getElementById("title").style.display = "block";
         break;
     }
+    document.getElementById("pause").style.display = "none";
     clearInterval(IntervId1);
     clearInterval(IntervId2);
     clearInterval(timerInterval);
