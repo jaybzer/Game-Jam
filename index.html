@@ -22,10 +22,16 @@
 			
 			<button id="play" onclick=Start()>COMMENCER</button>
 
-			<img src="img/pause.png" alt="bouton pause" id="pause">
-			
-			<!-- <button id="reset" class="reset">Recommencer</button> -->
+			<img src="img/pause.png" alt="bouton pause" id="pause" onclick=Pause()>
 
+			<div id="menu-pause">
+				<h2>PAUSE</h2>
+				<button class="pause-btn" onclick=Resume()>Reprendre</button>
+				<button class="pause-btn">Classement</button>
+				<button class="pause-btn" onclick=Start()>Recommencer</button>
+				<button class="pause-btn">Retour au menu</button>
+			</div>
+			
 			<p id="score">SCORE<br/><span id="currentScore">0000</span></p>
 			<div id="time-box"><img src="img/stopwatch.gif" id="stopwatch" alt="temps restant"> <span id="time">0</span></div>
 

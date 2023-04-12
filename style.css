@@ -36,16 +36,22 @@ body {
   }
 
   h1 {
+    text-align: center;
     margin: 0;
     font-size: 70px;
-  font-weight: 600;
-  background:linear-gradient(180deg, rgba(219, 160, 83, 1) 0%, rgba(219, 160, 83, 1) 48%, rgba(240, 199, 145, 1) 50%, rgba(160, 108, 32, 1) 54%, rgba(160, 108, 32, 1) 100%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+    font-weight: 600;
+    background:linear-gradient(180deg, rgba(219, 160, 83, 1) 0%, rgba(219, 160, 83, 1) 48%, rgba(240, 199, 145, 1) 50%, rgba(160, 108, 32, 1) 54%, rgba(160, 108, 32, 1) 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  h2 {
+    font-size: 2.5rem;
+    color: #7c5417;
+    margin: 25px 0;
   }
 
-  #play, #reset {
+  #play {
     color: white;
     font-family: 'VT323', monospace;
     cursor: pointer;
@@ -74,18 +80,40 @@ body {
     transform: translate(-50%, 0);
     width: 32px;
     cursor: pointer;
+    display: none;
   }
 
-  /* #reset {
-    top: 20px;
+  #menu-pause {
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    background-color: #FFD687;
+    padding: 10px 30px;
+    min-width: 200px;
+    border: 4px inset rgb(151, 99, 3);
+    border-radius: 15px;
+    text-align: center;
     display: none;
-  } */
+  }
 
-  .reset:active {
+  .reset:active, .pause-btn:active {
     background:linear-gradient(180deg, rgba(203, 145, 69, 1) 0%, rgb(164, 117, 56) 100%);
     border-color: #7c5417;
+  }
+
+  .reset, .pause-btn {
+    display: block;
+    min-width: 130px;
+    margin: 0 auto 15px auto;
+    color: white;
+    font-family: 'VT323', monospace;
+    cursor: pointer;
+    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
+    border: 3px inset #A06C20;
+    font-size: 1.1rem;
+    padding: 5px 10px;
+    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
   }
 
   #no-ammo {
@@ -100,18 +128,7 @@ body {
     font-size: 1.2rem;
     display: none;
   }
-
-  .reset {
-    color: white;
-    font-family: 'VT323', monospace;
-    cursor: pointer;
-    background:linear-gradient(180deg, rgba(255, 214, 135, 1) 0%, rgba(203, 145, 69, 1) 100%);
-    border: 3px inset #A06C20;
-    font-size: 1.1rem;
-    padding: 5px 10px;
-    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
-
-  }
+  #no-ammo .reset {display: inline-block;}
   
   .hud {
     padding: 10px 25px;
