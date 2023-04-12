@@ -169,10 +169,27 @@ body {
     display: inline-block;
   }
   
+  .ammo-box2 {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    height: 3rem;
+    padding: 5px 10px;
+    background-color: rgb(232, 176, 72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 5px 15px;
+    border: 5px inset rgb(151, 99, 3);
+    box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
+
+  }
+
   .ammo-box {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 0;
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);
@@ -204,6 +221,3 @@ body {
   color: red;
   font-size: 17px;
 }
-
-
-
