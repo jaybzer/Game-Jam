@@ -17,12 +17,13 @@
 	<body>
 		<div class="game">
 			<div id="title">
-				<h1>DUCK HUNT</h1>
-			</div>
+				<div id="title-bg">
+					<h1>DUCK HUNT</h1>
+				</div>
+				<button id="play" onclick=Start()>COMMENCER</button>
 				<input type="text" name="pseudo" id="pseudo" placeholder="Entre ton pseudo !">
 				<p class="errorPseudo">Entre un pseudo avant de commencer !</p>
-				<p class="pseudo"></p>
-			<button id="play" onclick=Start()>COMMENCER</button>
+			</div>
 
 			<img src="img/pause.png" alt="bouton pause" id="pause" onclick=Pause()>
 
@@ -34,19 +35,16 @@
 				<button class="pause-btn" onclick="End('restart')">Retour au menu</button>
 			</div>
 			
-			<p id="score">SCORE<br/><span id="currentScore">0000</span></p>
+			<p id="score">SCORE<br/><span id="currentScore">0000</span><br/><span class="pseudo"></span></p>
 			<div id="time-box"><img src="img/stopwatch.gif" id="stopwatch" alt="temps restant"> <span id="time">0</span></div>
 
 			<div id="end">
 				<h2>FIN</h2>
-				<p id="end-message">C'est fini, vous n'avez plus de munitions...</p>
+				<p id="end-message"></p>
 				<button class="reset" onclick=Start()>Recommencer</button>
 
 			</div>
 
-			
-		</div>
-		<div class="hud">
 			<div class="ammo-box"><p>Munitions Restantes : <span id="currentAmmo"></p></div>
 		</div>
 		<audio id="shot" src="img/shot.mp3"></audio>
