@@ -221,3 +221,44 @@ body {
   color: red;
   font-size: 17px;
 }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #ffd687;
+  margin: 15% auto;
+  padding: 20px;
+  border: 5px solid #a06c20;
+  width: 80%;
+}
+.modal-content h2 {
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.containerTop5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
