@@ -23,6 +23,9 @@ function Start() {
   bullets++;
   document.getElementById("no-ammo").style.display = 'none';
   document.getElementById("play").style.display = "none";
+  document.getElementById("title").style.display = "none";
+  document.getElementById("pause").style.display = "block";
+  document.getElementById("menu-pause").style.display = "none";
   document.getElementById("currentScore").innerHTML = count;
   document.getElementById("currentAmmo").innerHTML = bullets;
   timerDisplay.textContent = timeRemaining;
@@ -33,8 +36,10 @@ function Start() {
 
 
   timerInterval = setInterval(() => {
-    timeRemaining--;
-    timerDisplay.textContent = timeRemaining;
+    if (start) {
+        timeRemaining--;
+        timerDisplay.textContent = timeRemaining;
+    }
     if (timeRemaining === 0) {
       setTimeout(() => End('time'));
       clearInterval(timerInterval);
@@ -42,6 +47,32 @@ function Start() {
   }, 1000);
 }
 
+
+// Fonction au clic sur le bouton pause
+function Pause() {
+  document.getElementById("menu-pause").style.display = "block";
+  start = false;
+}
+
+// Fonction au clic sur le bouton reprendre
+function Resume() {
+    document.getElementById("menu-pause").style.display = "none";
+    start = true;
+}
+
+// Fonction au retour au menu
+function BackMenu() {
+    clearInterval(timerInterval);
+    clearInterval(IntervId);
+    document.getElementById("play").style.display = "block";
+    document.getElementById("menu-pause").style.display = "none";
+    document.getElementById("title").style.display = "block";
+    let allBirds = document.querySelectorAll('.duck, .hummingbird');
+    allBirds.forEach(element => {
+        element.style.display = "none";
+    });
+    start = false;
+}
 
 function End(type) {
 
@@ -92,9 +123,11 @@ function createBird(type) {
     switch (type) {
         case 'duck': 
         bird.setAttribute("src", "img/duck.gif");
+        bird.setAttribute("class", "duck");
         break;
         case 'hummingbird': 
         bird.setAttribute("src", "img/flutter.gif");
+        bird.setAttribute("class", "hummingbird");
         break;
     }
     let speed = Math.floor(Math.random() * 5) + 1;
