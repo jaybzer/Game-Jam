@@ -29,9 +29,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    max-width: 500px;
   }
 
   #title-bg {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    transform: translate(-50%);
     padding: 10px 20px;
     background-color: #FFD687;
     border: 5px solid #A06C20;
@@ -79,6 +84,14 @@ body {
     width: 32px;
     cursor: pointer;
     display: none;
+  }
+
+  #rules {
+    padding: 10px 20px;
+    background-color: #FFD687;
+    border: 3px solid #A06C20;
+    border-radius: 20px;
+    font-size: 1.1rem;
   }
 
   #menu-pause {

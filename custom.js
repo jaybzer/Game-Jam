@@ -35,6 +35,7 @@ function Start() {
   document.getElementById("level").innerHTML = level;
   document.getElementById("end").style.display = 'none';
   document.getElementById("title").style.display = "none";
+  document.getElementById("title-bg").style.display = "none";
   document.getElementById("pause").style.display = "block";
   document.getElementById("menu-pause").style.display = "none";
   document.getElementById("currentScore").innerHTML = count;
@@ -68,7 +69,10 @@ function Pause() {
 function Resume() {
     document.getElementById("menu-pause").style.display = "none";
     start = true;
-    paused = false;
+    setTimeout(() => {
+        paused = false;
+      }, "100")
+      
 }
 
 
@@ -87,6 +91,8 @@ function End(type) {
         document.getElementById("menu-pause").style.display = "none";
         paused = false;
         document.getElementById("title").style.display = "block";
+        document.getElementById("title-bg").style.display = "block";
+
         break;
         case 'restart': 
         document.getElementById("menu-pause").style.display = "none";
@@ -94,6 +100,7 @@ function End(type) {
         document.getElementById("title").style.display = "block";
         break;
     }
+    document.getElementById("pause").style.display = "none";
     clearInterval(IntervId1);
     clearInterval(IntervId2);
     clearInterval(timerInterval);
