@@ -58,15 +58,15 @@ function Start() {
 // Fonction au clic sur le bouton pause
 function Pause() {
     paused = true;
-  document.getElementById("menu-pause").style.display = "block";
-  start = false;
+    document.getElementById("menu-pause").style.display = "block";
+    start = false;
 }
 
 // Fonction au clic sur le bouton reprendre
 function Resume() {
-   document.getElementById("menu-pause").style.display = "none";
+    document.getElementById("menu-pause").style.display = "none";
     start = true;
-
+    paused = false;
 }
 
 
@@ -154,8 +154,10 @@ function createBird(type) {
     // Ajouter l'événement de clic pour supprimer le canard
     bird.addEventListener('click', function() {
         if (bullets != 0){
-        killBird(bird, "UserKill")
+            if (paused == false) {
+                killBird(bird, "UserKill")
         document.getElementById("currentScore").innerHTML = ++count;
+            }
         } // Supprimer le canard
     }, {once: true});
 
