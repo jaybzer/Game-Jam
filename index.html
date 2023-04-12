@@ -16,13 +16,15 @@
 
 	<body>
 		<div class="game">
+			<div id="title-bg">
+				<h1>DUCK HUNT</h1>
+			</div>
 			<div id="title">
-				<div id="title-bg">
-					<h1>DUCK HUNT</h1>
-				</div>
 				<button id="play" onclick=Start()>COMMENCER</button>
 				<input type="text" name="pseudo" id="pseudo" placeholder="Entre ton pseudo !">
 				<p class="errorPseudo">Entre un pseudo avant de commencer !</p>
+				<p id="rules">Règles du jeu : Dans Duck Hunt, l'objectif est de viser et de tirer sur 
+					les canards qui volent devant vous afin de gagner des points. Attention ! Les colibris vous font perdre des points.</p>
 			</div>
 
 			<img src="img/pause.png" alt="bouton pause" id="pause" onclick=Pause()>
