@@ -31,7 +31,6 @@ function Start() {
   count = 0;
   bullets++;
   document.getElementById("end").style.display = 'none';
-  document.getElementById("play").style.display = "none";
   document.getElementById("title").style.display = "none";
   document.getElementById("pause").style.display = "block";
   document.getElementById("menu-pause").style.display = "none";
@@ -59,17 +58,15 @@ function Start() {
 // Fonction au clic sur le bouton pause
 function Pause() {
     paused = true;
-  document.getElementById("menu-pause").style.display = "block";
-  start = false;
+    document.getElementById("menu-pause").style.display = "block";
+    start = false;
 }
 
 // Fonction au clic sur le bouton reprendre
 function Resume() {
-   document.getElementById("menu-pause").style.display = "none";
+    document.getElementById("menu-pause").style.display = "none";
     start = true;
     paused = false;
-
-
 }
 
 
@@ -81,16 +78,19 @@ function End(type) {
         document.getElementById("end").style.display = 'block';
         break;
         case 'ammo': 
-        document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munition ";
+        document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munitions... ";
         document.getElementById("end").style.display = 'block';
+        break;
+        case 'return': 
+        document.getElementById("menu-pause").style.display = "none";
+        paused = false;
+        document.getElementById("title").style.display = "block";
         break;
         case 'restart': 
         document.getElementById("menu-pause").style.display = "none";
         paused = false;
-        document.getElementById("play").style.display = "block";
         document.getElementById("title").style.display = "block";
         break;
-
     }
     clearInterval(IntervId1);
     clearInterval(IntervId2);
@@ -101,6 +101,10 @@ function End(type) {
     birds.forEach(function(bird) {
         bird.remove();
       });
+      if(type == 'restart'){
+        Start();
+      }
+
 }
 
 window.onclick = function() { 
@@ -158,8 +162,14 @@ function createBird(type) {
     // Ajouter l'événement de clic pour supprimer le canard
     bird.addEventListener('click', function() {
         if (bullets != 0 && !paused){
-        killBird(bird, "UserKill")
+        killBird(bird, "UserKill") 
+        console.log(bird.style.className)
+            if (bird.style.className="duck") {
         document.getElementById("currentScore").innerHTML = ++count;
+            } else {
+                console.log(bird.style.class);
+            }
+        }
         } // Supprimer le canard
     , {once: true});
 
