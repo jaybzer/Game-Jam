@@ -20,7 +20,7 @@ body {
 
 .game {
     width: 100%;
-    height: calc(100vh - (4rem + 30px));
+    height: 100%;
   }
 
   #title {
@@ -127,12 +127,7 @@ body {
     display: none;
   }
   #end .reset {display: inline-block;}
-  
-  .hud {
-    padding: 10px 25px;
-    display: flex;
-    justify-content: space-between;
-  }
+
 
   #score {
     font-family: pixelstroke;
@@ -162,6 +157,9 @@ body {
   }
   
   .ammo-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     height: 3rem;
     padding: 5px 10px;
     background-color: rgb(232, 176, 72);
