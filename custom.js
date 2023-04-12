@@ -31,7 +31,6 @@ function Start() {
   count = 0;
   bullets++;
   document.getElementById("end").style.display = 'none';
-  document.getElementById("play").style.display = "none";
   document.getElementById("title").style.display = "none";
   document.getElementById("pause").style.display = "block";
   document.getElementById("menu-pause").style.display = "none";
@@ -79,13 +78,12 @@ function End(type) {
         document.getElementById("end").style.display = 'block';
         break;
         case 'ammo': 
-        document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munition ";
+        document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munitions... ";
         document.getElementById("end").style.display = 'block';
         break;
         case 'restart': 
         document.getElementById("menu-pause").style.display = "none";
         paused = false;
-        document.getElementById("play").style.display = "block";
         document.getElementById("title").style.display = "block";
         break;
 
