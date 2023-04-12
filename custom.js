@@ -84,7 +84,6 @@ const windowHeight = window.innerHeight;
 // Fonction pour créer un canard de façon aléatoire
 
 function createBird(type) {
-    if (pause == false) {
     let bird = document.createElement('img');
     bird.style.position = 'absolute';
     bird.style.width = birdSize + 'px';
@@ -121,7 +120,7 @@ function createBird(type) {
     // Ajouter le canard à la page web
     document.body.appendChild(bird);
    }
-}
+
 
 // Fonction pour faire bouger le canard de gauche à droite
 function moveSquareRight(bird, speed) {
