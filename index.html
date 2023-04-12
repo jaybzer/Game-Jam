@@ -32,14 +32,19 @@
 			<div id="menu-pause">
 				<h2>PAUSE</h2>
 				<button class="pause-btn" onclick=Resume()>Reprendre</button>
-				<button class="pause-btn">Classement</button>
+				<button class="pause-btn" onclick="openModal()">Classement</button>
 				<button class="pause-btn" onclick="End('restart')">Recommencer</button>
 				<button class="pause-btn" onclick="End('return')">Retour au menu</button>
 			</div>
 			
 			<p id="score">SCORE<br/><span id="currentScore">0000</span><br/><span class="pseudo"></span></p>
 			<div id="time-box"><img src="img/stopwatch.gif" id="stopwatch" alt="temps restant"> <span id="time">0</span></div>
-
+			<div id="myModal" class="modal">
+                		<div class="modal-content">
+                  		<span class="close" onclick="closeModal()">&times;</span>
+                  		<h2>Top 5 des parties jouées</h2>
+                		</div>
+             	 	</div>
 			<div id="end">
 				<h2>FIN</h2>
 				<p id="end-message"></p>
