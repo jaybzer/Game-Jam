@@ -1,30 +1,66 @@
-let bullets = 30; 
-let count = 0; 
-let start = false; 
+let bullets = 30;
+let count = 0;
+let start = false;
+let elapsedTime = 0;
+let totalGameTime = 60;
+let timeRemaining = totalGameTime;
+let timerInterval;
 let IntervId;
 
-window.onload = function() {
-    document.getElementById("currentScore").innerHTML = count;
-    document.getElementById("currentAmmo").innerHTML = bullets;
-  };
+window.onload = function () {
+  document.getElementById("currentScore").innerHTML = count;
+  document.getElementById("currentAmmo").innerHTML = bullets;
+};
 
 function Start() {
-    start = true;
-    bullets = 30;
-    count = 0;
-    bullets++;
-    document.getElementById("play").style.display = 'none';
-    document.getElementById("no-ammo").style.display = 'none';
-    document.getElementById("currentScore").innerHTML = count;
-    document.getElementById("currentAmmo").innerHTML = bullets;
-    IntervId = setInterval(function() { createBird('duck') }, 2000);
-    IntervId = setInterval(function() { createBird('hummingbird') }, 5000);
 
+  let timerDisplay = document.getElementById("time");
+  start = true;
+  bullets = 30;
+  count = 0;
+  bullets++;
+  document.getElementById("no-ammo").style.display = 'none';
+  document.getElementById("play").style.display = "none";
+  document.getElementById("currentScore").innerHTML = count;
+  document.getElementById("currentAmmo").innerHTML = bullets;
+
+  IntervId = setInterval(function() { createBird('duck') }, 2000);
+  IntervId = setInterval(function() { createBird('hummingbird') }, 5000);
+
+  timerDisplay.textContent = timeRemaining;
+
+  timerInterval = setInterval(() => {
+    timeRemaining--;
+    timerDisplay.textContent = timeRemaining;
+    if (timeRemaining === 0) {
+      setTimeout(() => End('time'));
+      clearInterval(timerInterval);
+    }
+  }, 1000);
 }
 
-function End() {
+function shoot(bird) {
+  if (bullets != 0) {
+    bird.style.display = "none";
+    document.getElementById("currentScore").innerHTML = ++count;
+  }
+}
+
+function End(type) {
+
+    switch (type) {
+        case 'time':
+        document.getElementById("end-message").innerHTML = "C'est fini, le temps est écoulé... ";
+        break;
+        case 'ammo': 
+        document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munition ";
+        break;
+    }
+
     document.getElementById("no-ammo").style.display = 'block';
     clearInterval(IntervId);
+    clearInterval(timerInterval);
+    timeRemaining = 60;
     start = false;
 }
 
@@ -36,10 +72,12 @@ window.onclick = function() {
         }
         else {
             document.getElementById("currentAmmo").innerHTML=--bullets;
-            End();            
+            End('ammo');            
         }
     }
+
 }
+
 
 
 const birdSize = 40;
@@ -66,7 +104,7 @@ function createBird(type) {
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
     let direction = Math.floor(Math.random() * 2);
     if (direction === 0) { // de gauche à droite
-        
+
         moveSquareRight(bird, speed);
     } else { // de droite à gauche
         bird.style.transform='scaleX(-1)';
@@ -99,7 +137,6 @@ function moveSquareRight(bird, speed) {
     }, 20);
 }
 
-// Fonction pour faire bouger le canard de droite à gauche
 function moveSquareLeft(bird, speed) {
     let position = windowWidth;
     let interval = setInterval(function () {
@@ -116,5 +153,5 @@ function moveSquareLeft(bird, speed) {
 function killBird(bird, msg) {
 
     bird.remove();
-      
+
 }
