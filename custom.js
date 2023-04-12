@@ -161,7 +161,7 @@ function createBird(type) {
         killBird(bird, "UserKill")
         document.getElementById("currentScore").innerHTML = ++count;
         } // Supprimer le canard
-    }, {once: true});
+    , {once: true});
 
     // Ajouter le canard à la page web
     document.body.appendChild(bird);
