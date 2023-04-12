@@ -6,8 +6,9 @@ let elapsedTime = 0;
 let totalGameTime = 60;
 let timeRemaining = totalGameTime;
 let timerInterval;
-let IntervId;
-
+let IntervId1;
+let IntervId2;
+let birds = [];
 
 window.onload = function () {
   document.getElementById("currentScore").innerHTML = count;
@@ -21,7 +22,7 @@ function Start() {
   bullets = 30;
   count = 0;
   bullets++;
-  document.getElementById("no-ammo").style.display = 'none';
+  document.getElementById("end").style.display = 'none';
   document.getElementById("play").style.display = "none";
   document.getElementById("title").style.display = "none";
   document.getElementById("pause").style.display = "block";
@@ -30,9 +31,8 @@ function Start() {
   document.getElementById("currentAmmo").innerHTML = bullets;
   timerDisplay.textContent = timeRemaining;
 
-  IntervId = setInterval(function() { createBird('duck') }, 2000);
-  IntervId = setInterval(function() { createBird('hummingbird') }, 5000);
-
+  IntervId1 = setInterval(function() { createBird('duck') }, 2000);
+  IntervId2 = setInterval(function() { createBird('hummingbird') }, 5000);
 
 
   timerInterval = setInterval(() => {
@@ -48,17 +48,22 @@ function Start() {
 
 // Fonction au clic sur le bouton pause
 function Pause() {
+    paused = true;
+    console.log("in p fonction" + paused);
   document.getElementById("menu-pause").style.display = "block";
 }
 
 // Fonction au clic sur le bouton reprendre
 function Resume() {
     document.getElementById("menu-pause").style.display = "none";
+    setTimeout(() => {
+        paused = false;
+      }, "100");
+      
 }
 
 
 function End(type) {
-
     switch (type) {
         case 'time':
         document.getElementById("end-message").innerHTML = "C'est fini, le temps est écoulé... ";
@@ -67,17 +72,22 @@ function End(type) {
         document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munition ";
         break;
     }
-
-    document.getElementById("no-ammo").style.display = 'block';
-    clearInterval(IntervId);
+    document.getElementById("end").style.display = 'block';
+    clearInterval(IntervId1);
+    clearInterval(IntervId2);
     clearInterval(timerInterval);
     timeRemaining = 60;
     start = false;
+    birds.forEach(function(bird) {
+        bird.remove();
+      });
 }
 
 window.onclick = function() { 
-    if(start != false){
+    console.log("before cond" + paused);
+    if(start != false && paused == false){
         if (bullets != 1){
+            console.log("after cond" +paused);
         document.getElementById("shot").play()
 	    document.getElementById("currentAmmo").innerHTML=--bullets;
         }
@@ -98,11 +108,13 @@ const windowHeight = window.innerHeight;
 // Fonction pour créer un canard de façon aléatoire
 
 function createBird(type) {
+    if (paused == false) {
     let bird = document.createElement('img');
     bird.style.position = 'absolute';
     bird.style.width = birdSize + 'px';
     bird.style.height = birdSize + 'px';
     bird.style.top = Math.floor(Math.random() * (windowHeight - birdSize)) + 'px';
+    birds.push(bird);
     switch (type) {
         case 'duck': 
         bird.setAttribute("src", "img/duck.gif");
@@ -133,11 +145,13 @@ function createBird(type) {
 
     // Ajouter le canard à la page web
     document.body.appendChild(bird);
+    }
    }
 
 
 // Fonction pour faire bouger le canard de gauche à droite
 function moveSquareRight(bird, speed) {
+    if (paused == false){
     let position = -birdSize;
     let interval = setInterval(function () {
         position += speed;
@@ -147,9 +161,11 @@ function moveSquareRight(bird, speed) {
             killBird(bird, "left");
         }
     }, 20);
+ }
 }
 
 function moveSquareLeft(bird, speed) {
+    if (paused == false){
     let position = windowWidth;
     let interval = setInterval(function () {
         position -= speed;
@@ -160,9 +176,10 @@ function moveSquareLeft(bird, speed) {
         }
     }, 20);
 }
+}
 
 // Fonction pour supprimer le canard
-function killBird(bird, msg) {
+function killBird(bird) {
 
     bird.remove();
 
