@@ -1,4 +1,4 @@
-let bullets = 30;
+let bullets = 70;
 let count = 0;
 let start = false;
 let paused = false;
