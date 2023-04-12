@@ -163,11 +163,11 @@ function createBird(type) {
     bird.addEventListener('click', function() {
         if (bullets != 0 && !paused){
         killBird(bird, "UserKill") 
-        console.log(bird.style.className)
-            if (bird.style.className="duck") {
-        document.getElementById("currentScore").innerHTML = ++count;
+        console.log(bird.getAttribute("class"))
+            if (bird.getAttribute("class") == "duck") {
+                document.getElementById("currentScore").innerHTML = ++count;
             } else {
-                console.log(bird.style.class);
+                 document.getElementById("currentScore").innerHTML = --count;
             }
         }
         } // Supprimer le canard
