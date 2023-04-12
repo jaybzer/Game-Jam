@@ -10,28 +10,29 @@ let IntervId1;
 let IntervId2;
 let birds = []
 let difficulty = 'easy'; // niveau de difficulté par défaut
+const birdSize = 40;
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
 
 
 const difficultyParams = {
-    'easy': { // Paramètres pour le niveau easy
+    'Facile': { // Paramètres pour le niveau easy
         birdInterval: 2000,
         birdSpeed: 5
     },
-    'medium': { // Paramètres pour le niveau medium
+    'Intermediaire': { // Paramètres pour le niveau medium
         birdInterval: 1000,
         birdSpeed: 7
     },
-    'hard': { // Paramètres pour le niveau hard
+    'Difficile': { // Paramètres pour le niveau hard
         birdInterval: 500,
         birdSpeed: 10
     },
-    'insane': { // Paramètres pour le niveau insane
+    '?': { // Paramètres pour le niveau insane
         birdInterval: 100,
         birdSpeed: 15
     }
 }
-
-let { birdInterval, birdSpeed } = difficultyParams[difficulty];
 
 
 window.onload = function () {
@@ -54,7 +55,7 @@ function Start() {
   bullets = 70;
   count = 0;
   bullets++;
-  document.getElementById("no-ammo").style.display = 'none';
+  //document.getElementById("no-ammo").style.display = 'none';
   document.getElementById("play").style.display = "none";
   document.getElementById("title").style.display = "none";
   document.getElementById("title-bg").style.display = "none";
@@ -62,10 +63,11 @@ function Start() {
   document.getElementById("menu-pause").style.display = "none";
   document.getElementById("currentScore").innerHTML = count;
   document.getElementById("currentAmmo").innerHTML = bullets;
+  document.getElementById("level").innerHTML = difficulty;
   timerDisplay.textContent = timeRemaining;
 
-  IntervId1 = setInterval(function() { createBird('duck') }, 2000);
-  IntervId2 = setInterval(function() { createBird('hummingbird') }, 5000);
+  IntervId1 = setInterval(function() { createBird('duck') }, difficultyParams[difficulty].birdSpeed);
+  IntervId2 = setInterval(function() { createBird('hummingbird') }, difficultyParams[difficulty].birdSpeed);
 
   timerInterval = setInterval(() => {
     if (start) {
@@ -147,11 +149,6 @@ window.onclick = function() {
 
 }
 
-
-const birdSize = 40;
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
-
 // Fonction pour créer un canard de façon aléatoire
 
 function createBird(type) {
@@ -171,17 +168,17 @@ function createBird(type) {
         bird.setAttribute("class", "hummingbird");
         break;
     }
-    let speed = Math.floor(Math.random() * 5) + 1;
+
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
     let direction = Math.floor(Math.random() * 2);
     birds.push(bird);
     if (direction === 0) { // de gauche à droite
 
-        moveSquareRight(bird, speed);
+        moveSquareRight(bird, difficultyParams[difficulty].birdSpeed);
     } else { // de droite à gauche
         bird.style.transform='scaleX(-1)';
 
-        moveSquareLeft(bird, speed);
+        moveSquareLeft(bird, difficultyParams[difficulty].birdSpeed);
     }
 
     // Ajouter l'événement de clic pour supprimer le canard
@@ -233,7 +230,6 @@ function moveSquareLeft(bird, speed) {
         }
     }}, 20);
 }
-
 
 // Fonction pour supprimer le canard
 function killBird(bird, msg) {
