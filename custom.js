@@ -64,8 +64,8 @@ function Start() {
   document.getElementById("currentAmmo").innerHTML = bullets;
   timerDisplay.textContent = timeRemaining;
 
-  IntervId1 = setInterval(function() { createBird('duck') }, 2000);
-  IntervId2 = setInterval(function() { createBird('hummingbird') }, 5000);
+  IntervId1 = setInterval(function() { createBird('duck') }, birdInterval);
+  IntervId2 = setInterval(function() { createBird('hummingbird') }, birdInterval * 2.5);
 
   timerInterval = setInterval(() => {
     if (start) {
@@ -176,17 +176,16 @@ function createBird(type) {
         bird.setAttribute("class", "hummingbird");
         break;
     }
-    let speed = Math.floor(Math.random() * 5) + 1;
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
     let direction = Math.floor(Math.random() * 2);
     birds.push(bird);
     if (direction === 0) { // de gauche à droite
 
-        moveSquareRight(bird, speed);
+        moveSquareRight(bird, birdSpeed);
     } else { // de droite à gauche
         bird.style.transform='scaleX(-1)';
 
-        moveSquareLeft(bird, speed);
+        moveSquareLeft(bird, birdSpeed);
     }
 
     // Ajouter l'événement de clic pour supprimer le canard
