@@ -91,8 +91,11 @@ function Pause() {
 // Fonction au clic sur le bouton reprendre
 function Resume() {
     document.getElementById("menu-pause").style.display = "none";
-    paused = false;
     start = true;
+    start = true;
+    setTimeout(() => {
+        paused = false;
+      }, "100")
 }
 
 
