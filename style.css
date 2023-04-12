@@ -15,6 +15,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     cursor: url('img/target.png') 34 34, auto;
+    user-select: none;
 }
 
 .game {
@@ -22,14 +23,36 @@ body {
     height: calc(100vh - (4rem + 30px));
   }
 
-  #play, #reset {
+  #title {
+    padding: 10px 20px;
+    background-color: #FFD687;
+    border: 5px solid #A06C20;
+    border-radius: 20px;
     position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.8);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 70px;
+  font-weight: 600;
+  background:linear-gradient(180deg, rgba(219, 160, 83, 1) 0%, rgba(219, 160, 83, 1) 48%, rgba(240, 199, 145, 1) 50%, rgba(160, 108, 32, 1) 54%, rgba(160, 108, 32, 1) 100%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  }
+
+  #play, #reset {
     color: white;
     font-family: 'VT323', monospace;
     cursor: pointer;
   }
   
   #play {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -44,12 +67,21 @@ body {
     border-color: rgb(2, 101, 8);
   }
 
-  #reset {
+  #pause {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 32px;
+    cursor: pointer;
+  }
+
+  /* #reset {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: none;
-  }
+  } */
 
   .reset:active {
     background:linear-gradient(180deg, rgba(203, 145, 69, 1) 0%, rgb(164, 117, 56) 100%);
