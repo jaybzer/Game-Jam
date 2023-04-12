@@ -80,6 +80,7 @@ body {
     transform: translate(-50%, 0);
     width: 32px;
     cursor: pointer;
+    display: none;
   }
 
   #menu-pause {

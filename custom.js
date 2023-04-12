@@ -21,6 +21,9 @@ function Start() {
   bullets++;
   document.getElementById("no-ammo").style.display = 'none';
   document.getElementById("play").style.display = "none";
+  document.getElementById("title").style.display = "none";
+  document.getElementById("pause").style.display = "block";
+  document.getElementById("menu-pause").style.display = "none";
   document.getElementById("currentScore").innerHTML = count;
   document.getElementById("currentAmmo").innerHTML = bullets;
 
@@ -37,6 +40,16 @@ function Start() {
       clearInterval(timerInterval);
     }
   }, 1000);
+}
+
+// Fonction au clic sur le bouton pause
+function Pause() {
+  document.getElementById("menu-pause").style.display = "block";
+}
+
+// Fonction au clic sur le bouton reprendre
+function Resume() {
+    document.getElementById("menu-pause").style.display = "none";
 }
 
 function shoot(bird) {
