@@ -116,7 +116,7 @@ body {
     box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
   }
 
-  #no-ammo {
+  #end {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -128,7 +128,7 @@ body {
     font-size: 1.2rem;
     display: none;
   }
-  #no-ammo .reset {display: inline-block;}
+  #end .reset {display: inline-block;}
   
   .hud {
     padding: 10px 25px;
