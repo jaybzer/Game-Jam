@@ -8,7 +8,7 @@ let timeRemaining = totalGameTime;
 let timerInterval;
 let IntervId1;
 let IntervId2;
-let birds = [];
+let birds = []
 
 window.onload = function () {
   document.getElementById("currentScore").innerHTML = count;
@@ -100,7 +100,7 @@ function End(type) {
 }
 
 window.onclick = function() { 
-    if(start != false && paused == false){
+    if(start && !paused){
         if (bullets != 1){
         document.getElementById("shot").play()
 	    document.getElementById("currentAmmo").innerHTML=--bullets;
@@ -122,13 +122,12 @@ const windowHeight = window.innerHeight;
 // Fonction pour créer un canard de façon aléatoire
 
 function createBird(type) {
-    if (paused == false) {
+    if (!paused) {
     let bird = document.createElement('img');
     bird.style.position = 'absolute';
     bird.style.width = birdSize + 'px';
     bird.style.height = birdSize + 'px';
     bird.style.top = Math.floor(Math.random() * (windowHeight - birdSize)) + 'px';
-    birds.push(bird);
     switch (type) {
         case 'duck': 
         bird.setAttribute("src", "img/duck.gif");
@@ -142,6 +141,7 @@ function createBird(type) {
     let speed = Math.floor(Math.random() * 5) + 1;
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
     let direction = Math.floor(Math.random() * 2);
+    birds.push(bird);
     if (direction === 0) { // de gauche à droite
 
         moveSquareRight(bird, speed);
@@ -153,9 +153,8 @@ function createBird(type) {
 
     // Ajouter l'événement de clic pour supprimer le canard
     bird.addEventListener('click', function() {
-        if (bullets != 0){
-            if (paused == false) {
-                killBird(bird, "UserKill")
+        if (bullets != 0 && !paused){
+        killBird(bird, "UserKill")
         document.getElementById("currentScore").innerHTML = ++count;
             }
         } // Supprimer le canard
@@ -169,32 +168,34 @@ function createBird(type) {
 
 // Fonction pour faire bouger le canard de gauche à droite
 function moveSquareRight(bird, speed) {
-    if (paused == false){
+    
     let position = -birdSize;
     let interval = setInterval(function () {
+        if (!paused) {
         position += speed;
         bird.style.left = position + 'px';
         if (position > windowWidth) {
             clearInterval(interval);
             killBird(bird, "left");
         }
-    }, 20);
+    }}, 20);
  }
-}
+
 
 function moveSquareLeft(bird, speed) {
-    if (paused == false){
+    
     let position = windowWidth;
     let interval = setInterval(function () {
+        if (!paused) {
         position -= speed;
         bird.style.left = position + 'px';
         if (position < -birdSize) {
             clearInterval(interval);
             killBird(bird, "right");
         }
-    }, 20);
+    }}, 20);
 }
-}
+
 
 // Fonction pour supprimer le canard
 function killBird(bird) {
