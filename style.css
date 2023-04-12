@@ -176,5 +176,29 @@ body {
     box-shadow: 3px 3px 10px -3px rgba(0, 0, 0, 0.8);
 
   }
+#pseudo {
+  border-radius: 20px;
+  background-color: #ffd687;
+  border: 5px solid #a06c20;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  top: 44%;
+  left: 43%;
+}
+.pseudo {
+  font-family: pixelstroke;
+  color: white;
+  font-size: 15px;
+}
+.errorPseudo {
+  display: none;
+  color: red;
+  font-size: 17px;
+  position: absolute;
+  top: 37%;
+  left: 40%;
+}
+
 
 

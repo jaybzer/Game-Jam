@@ -18,6 +18,13 @@ window.onload = function () {
 function Start() {
 
   let timerDisplay = document.getElementById("time");
+  let pseudo = document.getElementById("pseudo");
+  
+  if (!pseudo.value) {
+    document.querySelector(".errorPseudo").style.display = "inline";
+  } else {
+    document.querySelector(".pseudo").innerHTML = pseudo.value;
+    pseudo.style.display = "none";
   start = true;
   bullets = 30;
   count = 0;
@@ -42,7 +49,7 @@ function Start() {
       setTimeout(() => End('time'));
       clearInterval(timerInterval);
     }
-  }, 1000);
+  }, 1000);}
 }
 
 
