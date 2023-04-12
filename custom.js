@@ -157,7 +157,7 @@ function createBird(type) {
 
     // Ajouter l'événement de clic pour supprimer le canard
     bird.addEventListener('click', function() {
-        if (bullets != 0){
+        if (bullets != 0 && !paused){
         killBird(bird, "UserKill")
         document.getElementById("currentScore").innerHTML = ++count;
         } // Supprimer le canard
@@ -186,6 +186,7 @@ function moveSquareRight(bird, speed) {
 
 
 function moveSquareLeft(bird, speed) {
+    
     let position = windowWidth;
     let interval = setInterval(function () {
         if (!paused) {
