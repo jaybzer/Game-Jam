@@ -29,7 +29,10 @@ function Start() {
   start = true;
   bullets = 70;
   count = 0;
+  level = 1; 
   bullets++;
+
+  document.getElementById("level").innerHTML = level;
   document.getElementById("end").style.display = 'none';
   document.getElementById("title").style.display = "none";
   document.getElementById("pause").style.display = "block";
@@ -40,7 +43,6 @@ function Start() {
 
   IntervId1 = setInterval(function() { createBird('duck') }, 2000);
   IntervId2 = setInterval(function() { createBird('hummingbird') }, 5000);
-
 
   timerInterval = setInterval(() => {
     if (start) {
@@ -110,9 +112,9 @@ function End(type) {
 window.onclick = function() { 
     if(start && !paused){
         if (bullets != 1){
-        document.getElementById("shot").play()
-	    document.getElementById("currentAmmo").innerHTML=--bullets;
-        }
+            document.getElementById("shot").play()
+            document.getElementById("currentAmmo").innerHTML=--bullets;
+            }
         else {
             document.getElementById("currentAmmo").innerHTML=--bullets;
             End('ammo');            
@@ -120,7 +122,6 @@ window.onclick = function() {
     }
 
 }
-
 
 
 const birdSize = 40;
