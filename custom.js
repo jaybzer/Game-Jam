@@ -1,4 +1,4 @@
-let bullets = 30;
+let bullets = 70;
 let count = 0;
 let start = false;
 let paused = false;
@@ -26,7 +26,7 @@ function Start() {
     document.querySelector(".pseudo").innerHTML = pseudo.value;
     pseudo.style.display = "none";
   start = true;
-  bullets = 30;
+  bullets = 70;
   count = 0;
   bullets++;
   document.getElementById("end").style.display = 'none';
