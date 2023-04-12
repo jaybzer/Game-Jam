@@ -25,6 +25,7 @@ function Start() {
   } else {
     document.querySelector(".pseudo").innerHTML = pseudo.value;
     pseudo.style.display = "none";
+    document.querySelector(".errorPseudo").style.display = "none";
   start = true;
   bullets = 70;
   count = 0;
@@ -58,7 +59,6 @@ function Start() {
 // Fonction au clic sur le bouton pause
 function Pause() {
     paused = true;
-    console.log("in p fonction" + paused);
   document.getElementById("menu-pause").style.display = "block";
   start = false;
 }
@@ -70,33 +70,30 @@ function Resume() {
 
 }
 
-// Fonction au retour au menu
-function BackMenu() {
-    clearInterval(timerInterval);
-    clearInterval(IntervId);
-    document.getElementById("play").style.display = "block";
-    document.getElementById("menu-pause").style.display = "none";
-    document.getElementById("title").style.display = "block";
-    let allBirds = document.querySelectorAll('.duck, .hummingbird');
-    allBirds.forEach(element => {
-        element.style.display = "none";
-    });
-    start = false;
-}
+
 
 function End(type) {
     switch (type) {
         case 'time':
         document.getElementById("end-message").innerHTML = "C'est fini, le temps est écoulé... ";
+        document.getElementById("end").style.display = 'block';
         break;
         case 'ammo': 
         document.getElementById("end-message").innerHTML = "C'est fini, vous n'avez plus de munition ";
+        document.getElementById("end").style.display = 'block';
         break;
+        case 'restart': 
+        document.getElementById("menu-pause").style.display = "none";
+        paused = false;
+        document.getElementById("play").style.display = "block";
+        document.getElementById("title").style.display = "block";
+        break;
+
     }
-    document.getElementById("end").style.display = 'block';
     clearInterval(IntervId1);
     clearInterval(IntervId2);
     clearInterval(timerInterval);
+    
     timeRemaining = 60;
     start = false;
     birds.forEach(function(bird) {
@@ -105,10 +102,8 @@ function End(type) {
 }
 
 window.onclick = function() { 
-    console.log("before cond" + paused);
     if(start != false && paused == false){
         if (bullets != 1){
-            console.log("after cond" +paused);
         document.getElementById("shot").play()
 	    document.getElementById("currentAmmo").innerHTML=--bullets;
         }
