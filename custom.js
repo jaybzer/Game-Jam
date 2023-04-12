@@ -31,6 +31,7 @@ function End() {
 window.onclick = function() { 
     if(start != false){
         if (bullets != 1){
+        document.getElementById("shot").play()
 	    document.getElementById("currentAmmo").innerHTML=--bullets;
         }
         else {
