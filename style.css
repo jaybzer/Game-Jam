@@ -78,6 +78,25 @@ body {
     border-color: rgb(2, 101, 8);
   }
 
+  #difficulties {
+
+  }
+
+  .difficulty {
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+  }
+
+  .difficulty.active {
+    background-color: #FFD687;
+    color: #7c5417;
+  }
+
   #pause {
     position: absolute;
     top: 2em;
