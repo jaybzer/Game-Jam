@@ -28,6 +28,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform : translate(-50%, -50%);
     text-align: center;
     max-width: 500px;
   }
@@ -37,6 +38,7 @@ body {
     top: 2em;
     left: 50%;
     transform: translate(-50%);
+    -webkit-transform : translate(-50%);
     padding: 10px 20px;
     background-color: #FFD687;
     border: 5px solid #A06C20;
@@ -81,6 +83,7 @@ body {
     top: 2em;
     left: 50%;
     transform: translate(-50%, 0);
+    -webkit-transform : translate(-50%, 0);
     width: 32px;
     cursor: pointer;
     display: none;
@@ -99,6 +102,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform : translate(-50%, -50%);
     background-color: #FFD687;
     padding: 10px 30px;
     min-width: 200px;
