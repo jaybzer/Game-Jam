@@ -67,7 +67,7 @@ function Start() {
     pseudo.style.display = "none";
     document.querySelector(".errorPseudo").style.display = "none";
     start = true;
-    bullets = 50;
+    bullets = 30;
     count = 0;
     bullets++
     document.getElementById("end").style.display = 'none';
