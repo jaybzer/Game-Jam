@@ -46,10 +46,10 @@ function Start() {
   let timerDisplay = document.getElementById("time");
   let pseudo = document.getElementById("pseudo");
 
-  if (!pseudo.value) {
+  if (!pseudo.value.trim()) {
     document.querySelector(".errorPseudo").style.display = "inline";
   } else {
-    document.querySelector(".pseudo").innerHTML = pseudo.value;
+    document.querySelector(".pseudo").innerHTML = pseudo.value.trim();
     pseudo.style.display = "none";
     document.querySelector(".errorPseudo").style.display = "none";
     start = true;
