@@ -42,6 +42,17 @@ window.onload = function () {
   document.getElementById("currentAmmo").innerHTML = bullets;
 };
 
+// Choix de la difficulté dans le menu
+function ChooseDifficulty(id) {
+    let difficulties = document.querySelectorAll('.difficulty');
+    let dif = document.getElementById(id);
+    difficulties.forEach(element => {
+        element.classList.remove('active');
+    });
+    dif.classList.add("active");
+    difficulty = id;
+}
+
 function Start() {
 
   let timerDisplay = document.getElementById("time");
