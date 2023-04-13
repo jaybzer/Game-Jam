@@ -8,8 +8,12 @@ let timeRemaining = totalGameTime;
 let timerInterval;
 let IntervId1;
 let IntervId2;
+let IntervId3;
+const birdSize = 40;
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
 let birds = []
-let difficulty = 'Intermediaire'; // niveau de difficulté par défaut
+let difficulty = 'Facile'; // niveau de difficulté par défaut
 
 const difficultyParams = {
     'Facile': { // Paramètres pour le niveau easy
@@ -122,6 +126,7 @@ function End(type) {
     document.getElementById("pause").style.display = "none";
     clearInterval(IntervId1);
     clearInterval(IntervId2);
+    clearInterval(IntervId3);
     clearInterval(timerInterval);
 
     timeRemaining = 60;
@@ -132,8 +137,7 @@ function End(type) {
       if(type == 'restart'){
         Start();
       }
-
-}
+    }
 
 window.onclick = function() { 
     if(start && !paused){
@@ -146,13 +150,9 @@ window.onclick = function() {
             End('ammo');            
         }
     }
-
 }
 
 
-const birdSize = 40;
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
 
 // Fonction pour créer un canard de façon aléatoire
 
@@ -163,17 +163,25 @@ function createBird(type) {
     bird.style.width = birdSize + 'px';
     bird.style.height = birdSize + 'px';
     bird.style.top = Math.floor(Math.random() * (windowHeight - birdSize)) + 'px';
+    let speed; 
     switch (type) {
         case 'duck': 
         bird.setAttribute("src", "img/duck.gif");
         bird.setAttribute("class", "duck");
+        speed = Math.floor(Math.random() * 3) + birdSpeed;
         break;
         case 'hummingbird': 
         bird.setAttribute("src", "img/flutter.gif");
         bird.setAttribute("class", "hummingbird");
+        speed = Math.floor(Math.random() * 3) + birdSpeed;
+        break;
+        case 'ufo': 
+        bird.setAttribute("src", "img/ufo.gif");
+        bird.setAttribute("class", "ufo");
+        speed = 16;
         break;
     }
-    let speed = Math.floor(Math.random() * 3) + birdSpeed;
+    
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
     let direction = Math.floor(Math.random() * 2);
     birds.push(bird);
@@ -189,7 +197,8 @@ function createBird(type) {
     // Ajouter l'événement de clic pour supprimer le canard
     bird.addEventListener('click', function() {
         if (bullets != 0 && !paused){
-        killBird(bird, "UserKill")
+       
+        
         switch (bird.getAttribute("class")) {
             case "duck":
             document.getElementById("currentScore").innerHTML = ++count;
@@ -197,10 +206,14 @@ function createBird(type) {
             case "hummingbird":
             document.getElementById("currentScore").innerHTML = --count;
             break;
+            case "ufo":
+            count += 3
+            document.getElementById("currentScore").innerHTML = count;
+            console.log(count);
+            break;
            }
-           if (count == 12){
-            changeDifficulty('Difficile');
-           }
+            checkScore();
+           killBird(bird, "UserKill")
           }
     }, {once: true}); // Supprimer le canard
 
@@ -246,13 +259,44 @@ function killBird(bird, msg) {
 
 }
 
+function checkScore() {
+    switch (difficulty) {
+        case "Facile":
+            if (count >=10) {
+                changeDifficulty("Intermediaire");
+                bullets += 15
+                document.getElementById("currentAmmo").innerHTML=bullets;
+                timeRemaining += 18;
+            }
+        break;
+        case "Intermediaire":
+            if (count >=20) {
+                changeDifficulty("Difficile");
+                bullets += 15
+                document.getElementById("currentAmmo").innerHTML=bullets;
+                timeRemaining += 18;
+            }
+        break;
+        case "Difficile":
+            if (count >=30) {
+                changeDifficulty("?");
+                bullets += 15
+                document.getElementById("currentAmmo").innerHTML=bullets;
+                timeRemaining += 18;
+            }
+        break;
+       }
+}
 function changeDifficulty(newDifficulty) {
+    difficulty = newDifficulty;
     document.getElementById("level").innerHTML = newDifficulty;
     birdSpeed = difficultyParams[newDifficulty].birdSpeed;
-    if (IntervId1 || IntervId2){
+    if (IntervId1 || IntervId2 || IntervId3){
         clearInterval(IntervId1); 
         clearInterval(IntervId2);
+        clearInterval(IntervId3);
     }
     IntervId1 = setInterval(function() { createBird('duck') }, difficultyParams[newDifficulty].birdInterval);
-    IntervId2 = setInterval(function() { createBird('hummingbird') },  difficultyParams[newDifficulty].birdInterval);
-    }
+    IntervId2 = setInterval(function() { createBird('hummingbird') },  difficultyParams[newDifficulty].birdInterval*2);
+    IntervId3 = setInterval(function() { createBird('ufo') },  difficultyParams[newDifficulty].birdInterval*5);    
+}
