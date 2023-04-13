@@ -9,6 +9,7 @@ let timerInterval;
 let IntervId1;
 let IntervId2;
 let IntervId3;
+let IntervId4;
 const birdSize = 40;
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
@@ -127,6 +128,7 @@ function End(type) {
     clearInterval(IntervId1);
     clearInterval(IntervId2);
     clearInterval(IntervId3);
+    clearInterval(IntervId4);
     clearInterval(timerInterval);
 
     timeRemaining = 60;
@@ -180,6 +182,11 @@ function createBird(type) {
         bird.setAttribute("class", "ufo");
         speed = 16;
         break;
+        case 'crate': 
+        bird.setAttribute("src", "img/crate.png");
+        bird.setAttribute("class", "crate");
+        speed = Math.floor(Math.random() * 3) + birdSpeed;
+        break;
     }
     
     // Déterminer la direction de l'apparition du canard (de gauche à droite ou de droite à gauche)
@@ -209,7 +216,10 @@ function createBird(type) {
             case "ufo":
             count += 3
             document.getElementById("currentScore").innerHTML = count;
-            console.log(count);
+            break;
+            case "crate":
+            bullets += 4
+            document.getElementById("currentAmmo").innerHTML=bullets;
             break;
            }
             checkScore();
@@ -291,12 +301,14 @@ function changeDifficulty(newDifficulty) {
     difficulty = newDifficulty;
     document.getElementById("level").innerHTML = newDifficulty;
     birdSpeed = difficultyParams[newDifficulty].birdSpeed;
-    if (IntervId1 || IntervId2 || IntervId3){
+    if (IntervId1 || IntervId2 || IntervId3 || IntervId4){
         clearInterval(IntervId1); 
         clearInterval(IntervId2);
         clearInterval(IntervId3);
+        clearInterval(IntervId4);
     }
     IntervId1 = setInterval(function() { createBird('duck') }, difficultyParams[newDifficulty].birdInterval);
-    IntervId2 = setInterval(function() { createBird('hummingbird') },  difficultyParams[newDifficulty].birdInterval*2);
-    IntervId3 = setInterval(function() { createBird('ufo') },  difficultyParams[newDifficulty].birdInterval*5);    
+    IntervId2 = setInterval(function() { createBird('hummingbird') },  difficultyParams[newDifficulty].birdInterval*3);
+    IntervId3 = setInterval(function() { createBird('ufo') },  difficultyParams[newDifficulty].birdInterval*5);
+    IntervId4 = setInterval(function() { createBird('crate') },  difficultyParams[newDifficulty].birdInterval*4);      
 }
