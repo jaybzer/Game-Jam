@@ -258,6 +258,8 @@ function openModal() {
 }
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
+    let removediv = document.querySelectorAll(".containerTop5");
+  removediv.forEach((el) => el.remove());
 }
 
 window.onclick = function (event) {
@@ -267,7 +269,7 @@ window.onclick = function (event) {
 };
 
 async function addScoreInRanking(data) {
-  console.log(data);
+  
   let scoreToAdd = { pseudo: data.pseudo, score: data.score };
   console.log("scoreToAdd", scoreToAdd);
   await fetch("addRank.js", {
@@ -280,13 +282,14 @@ async function addScoreInRanking(data) {
 }
 async function getScoreInRanking() {
   let modalRanking = document.querySelector(".modal-content");
+  let pseudo = document.getElementById("pseudo");
 
   const request = await fetch("ranking.json");
   const ranking = await request.json();
   const rankingSorted = ranking.sort((a, b) => b.score - a.score);
 
   for (i = 0; i < 5; i++) {
-    console.log(rankingSorted[i]);
+   
     let createDiv = document.createElement("div");
     createDiv.classList.add("containerTop5");
     createPseudo = document.createElement("p");
@@ -295,7 +298,9 @@ async function getScoreInRanking() {
     createScore.classList.add("score");
     createPseudo.innerHTML = rankingSorted[i].pseudo;
     createScore.innerHTML = rankingSorted[i].score + " points";
-
+  if (pseudo.value.trim() == rankingSorted[i].pseudo) {
+      createDiv.style.background = "rgb(160 108 31 / 55%)";
+    }
     createDiv.appendChild(createPseudo);
     createDiv.appendChild(createScore);
     modalRanking.appendChild(createDiv);
