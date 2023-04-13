@@ -1,4 +1,4 @@
-let bullets = 50;
+let bullets = 30;
 let count = 0;
 let start = false;
 let paused = false;
@@ -14,6 +14,7 @@ const birdSize = 40;
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 let birds = []
+let initialDifficulty = 0;
 let difficulty = 'Facile'; // niveau de difficulté par défaut
 
 const difficultyParams = {
@@ -43,7 +44,7 @@ window.onload = function () {
 };
 
 // Choix de la difficulté dans le menu
-function ChooseDifficulty(id) {
+function ChooseDifficulty(id, initial) {
     let difficulties = document.querySelectorAll('.difficulty');
     let dif = document.getElementById(id);
     difficulties.forEach(element => {
@@ -51,6 +52,7 @@ function ChooseDifficulty(id) {
     });
     dif.classList.add("active");
     difficulty = id;
+    initialDifficulty = initial;
 }
 
 function Start() {
@@ -136,11 +138,28 @@ function End(type) {
         break;
     }
     document.getElementById("pause").style.display = "none";
+
     clearInterval(IntervId1);
     clearInterval(IntervId2);
     clearInterval(IntervId3);
     clearInterval(IntervId4);
     clearInterval(timerInterval);
+
+    switch (initialDifficulty) {
+        case 0: 
+        difficulty = 'Facile';
+        document.getElementById("Facile").setAttribute("class", "difficulty active");
+        break;
+        case 1: 
+        difficulty = 'Intermediaire';
+        document.getElementById("Intermediaire").setAttribute("class", "difficulty active");
+        break;
+        case 2: 
+        difficulty = 'Difficile';
+        document.getElementById("Difficile").setAttribute("class", "difficulty active");
+        break;
+    }
+    
 
     timeRemaining = 60;
     start = false;
@@ -283,7 +302,7 @@ function killBird(bird, msg) {
 function checkScore() {
     switch (difficulty) {
         case "Facile":
-            if (count >=10) {
+            if (count >= (10 - initialDifficulty*10)) {
                 changeDifficulty("Intermediaire");
                 bullets += 15
                 document.getElementById("currentAmmo").innerHTML=bullets;
@@ -291,7 +310,7 @@ function checkScore() {
             }
         break;
         case "Intermediaire":
-            if (count >=20) {
+            if (count >=(20 - initialDifficulty*10)) {
                 changeDifficulty("Difficile");
                 bullets += 15
                 document.getElementById("currentAmmo").innerHTML=bullets;
@@ -299,7 +318,7 @@ function checkScore() {
             }
         break;
         case "Difficile":
-            if (count >=30) {
+            if (count >=(30 - initialDifficulty*10)) {
                 changeDifficulty("?");
                 bullets += 15
                 document.getElementById("currentAmmo").innerHTML=bullets;
@@ -309,6 +328,7 @@ function checkScore() {
        }
 }
 function changeDifficulty(newDifficulty) {
+ 
     difficulty = newDifficulty;
     document.getElementById("level").innerHTML = newDifficulty;
     birdSpeed = difficultyParams[newDifficulty].birdSpeed;
