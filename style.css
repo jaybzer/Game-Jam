@@ -261,4 +261,22 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+ gap: 60px;
 }
+.containerTop5:nth-child(1n + 1) {
+  border-bottom: black solid 3px;
+}
+.score {
+  font-weight: bold;
+  justify-self: flex-start;
+  margin-left: 24px;
+  padding: 3px 37px;
+}
+.name {
+  font-weight: bold;
+  justify-self: end;
+  margin-right: 53px;
+  border-radius: 6px;
+  padding: 3px 37px;
+}
+
